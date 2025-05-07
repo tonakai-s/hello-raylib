@@ -6,8 +6,7 @@ use raylib::{
 };
 
 pub struct Character {
-    pub width: f32,
-    pub height: f32,
+    pub area: Rectangle,
     pub pos: Vector2,
     pub frame_rec: Rectangle,
     pub speed: f32,
@@ -26,6 +25,12 @@ impl Character {
         let height = (texture.height / 8) as f32;
 
         let pos = Vector2 { x: 0.0, y: 0.0 };
+        let area = Rectangle {
+            x: pos.x,
+            y: pos.y,
+            width,
+            height,
+        };
         let frame_rec = Rectangle {
             x: rec.0,
             y: rec.1,
@@ -34,8 +39,7 @@ impl Character {
         };
 
         Character {
-            width,
-            height,
+            area,
             pos,
             frame_rec,
             speed: 2.0,
